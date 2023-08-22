@@ -21,7 +21,7 @@ pipeline {
       steps{
         script {
           dockerImage1 = docker.build dockerimagename1
-          dockerImage2 = docker.build dockerimagename2
+          //dockerImage2 = docker.build dockerimagename2
         }
       }
     }
@@ -34,7 +34,7 @@ pipeline {
         script {
           docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
             dockerImage1.push("latest")
-            dockerImage2.push("latest")
+            //dockerImage2.push("latest")
           }
         }
       }
@@ -44,7 +44,7 @@ pipeline {
       steps {
         script {
           kubernetesDeploy(configs: "frontend/deployment.yaml", "frontend/service.yaml")
-          kubernetesDeploy(configs: "backend/deployment.yaml", "backend/service.yaml")
+          //kubernetesDeploy(configs: "backend/deployment.yaml", "backend/service.yaml")
         }
       }
     }
