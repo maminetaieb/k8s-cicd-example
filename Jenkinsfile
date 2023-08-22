@@ -20,8 +20,8 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-          dockerImage1 = docker.build(dockerimagename1, 'frontend/Dockerfile')
-          dockerImage2 = docker.build(dockerimagename2, 'backend/Dockerfile')
+          dockerImage1 = docker.build(dockerimagename1, 'frontend')
+          dockerImage2 = docker.build(dockerimagename2, 'backend')
         }
       }
     }
