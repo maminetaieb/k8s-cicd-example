@@ -43,8 +43,10 @@ pipeline {
     stage('Deploying container to Kubernetes') {
       steps {
         script {
-          kubernetesDeploy(configs: "frontend/deployment.yaml", "frontend/service.yaml")
-          kubernetesDeploy(configs: "backend/deployment.yaml", "backend/service.yaml")
+          sh 'kubectl apply -f frontend/deployment.yaml'
+          sh 'kubectl apply -f frontend/service.yaml'
+          sh 'kubectl apply -f backend/deployment.yaml'
+          sh 'kubectl apply -f backend/service.yaml'
         }
       }
     }
