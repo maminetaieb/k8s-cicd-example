@@ -5,7 +5,7 @@ metadata:
   name: frontend
 spec:
   #the Number of Pods
-  replicas: 2
+  replicas: 4
   selector:
     matchLabels:
       app: frontend
@@ -23,8 +23,8 @@ spec:
         resources:
          #cpu and memory limit
           limits:
-            memory: "550Mi"
-            cpu: "500m"
+            memory: "10100Mi"
+            cpu: "1000m"
         ports:
         #the port on which the app can be reached out inside the container
         - containerPort: 8000
