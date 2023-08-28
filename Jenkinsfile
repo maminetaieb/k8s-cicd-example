@@ -19,11 +19,9 @@ pipeline {
 
     stage('Build image') {
       steps{
-        container('docker') {
-          script {
-            dockerImage1 = docker.build(dockerimagename1, 'frontend')
-            dockerImage2 = docker.build(dockerimagename2, 'backend')
-          }
+        script {
+          dockerImage1 = docker.build(dockerimagename1, 'frontend')
+          dockerImage2 = docker.build(dockerimagename2, 'backend')
         }
       }
     }
@@ -33,12 +31,10 @@ pipeline {
                registryCredential = 'dockerhub-credentials'
            }
       steps{
-        container('docker') {
-          script {
-            docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
-              dockerImage1.push("latest")
-              dockerImage2.push("latest")
-            }
+        script {
+          docker.withRegistry( 'https://registry.hub.docker.com', registryCredential ) {
+            dockerImage1.push("latest")
+            dockerImage2.push("latest")
           }
         }
       }
