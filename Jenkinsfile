@@ -28,7 +28,6 @@ pipeline {
                 -D sonar.projectKey=YOUR_PROJECT_KEY_HERE \
                 -D sonar.projectName=YOUR_PROJECT_NAME_HERE \
                 -D sonar.projectVersion=YOUR_PROJECT_VERSION_HERE \
-                -D sonar.languages=js,ts \  // DEPRECATED, do not use this option
                 -D sonar.sources=./src \
                 -D sonar.test.inclusions=YOUR_INCLUSIONS_HERE \
                 -D sonar.exclusions=YOUR_EXCLUSIONS_HERE
