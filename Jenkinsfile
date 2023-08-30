@@ -25,12 +25,12 @@ pipeline {
             withSonarQubeEnv('MySonarQube') {
                 sh '''
                 ${scannerHome}/bin/sonar-scanner \
-                -D sonar.projectKey=YOUR_PROJECT_KEY_HERE \
-                -D sonar.projectName=YOUR_PROJECT_NAME_HERE \
-                -D sonar.projectVersion=YOUR_PROJECT_VERSION_HERE \
+                -D sonar.projectKey=myproject \
+                -D sonar.projectName=myproject \
+                -D sonar.projectVersion=1.0 \
                 -D sonar.sources=./src \
-                -D sonar.test.inclusions=YOUR_INCLUSIONS_HERE \
-                -D sonar.exclusions=YOUR_EXCLUSIONS_HERE
+                -D sonar.test.inclusions=**/*.test.tsx,**/*.test.ts,**/*.js \
+                -D sonar.exclusions=*/node_modules/**,**/dist/**,**/*.d.ts
                 '''
             }
         }
