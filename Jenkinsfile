@@ -25,7 +25,7 @@ pipeline {
             withSonarQubeEnv('MySonarQube') {
                 sh '''
                 ${scannerHome}/bin/sonar-scanner \
-                -D sonar.java.jdkHome=/usr/lib/jvm/java-17-openjdk-amd64/
+                -D sonar.java.jdkHome=/usr/lib/jvm/java-17-openjdk-amd64/ \
                 -D sonar.projectKey=myproject \
                 -D sonar.projectName=myproject \
                 -D sonar.projectVersion=1.0 \
