@@ -63,9 +63,9 @@ pipeline {
     stage('Deploying container to Kubernetes') {
       steps {
         script {
-          withCredentials([string(credentialsId: 'minikube-credentials', variable: 'TOKEN')]) {
-            sh "kubectl config set-credentials jenkins --token=${TOKEN}"
-          }
+          withCredentials([string(credentialsId: 'jenkins-sa-token', variable: 'TOKEN')]) {
+                sh "kubectl --token=\$TOKEN --server=https://kubernetes.default.svc.cluster.local apply -f deployment.yaml"
+            }
           sh 'kubectl apply -f frontend/deployment.yaml'
           sh 'kubectl apply -f frontend/service.yaml'
           sh 'kubectl apply -f backend/deployment.yaml'
