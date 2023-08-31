@@ -22,7 +22,7 @@ pipeline {
             def scannerHome = tool name: 'sonar_scanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation';
         }
         steps {
-            withSonarQubeEnv('MySonarQube', envOnly: true) {
+            withSonarQubeEnv('MySonarQube') {
                 sh '''
                 ${scannerHome}/bin/sonar-scanner \
                 -D sonar.java.jdkHome=/usr/lib/jvm/java-17-openjdk-amd64/ \
