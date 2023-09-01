@@ -64,10 +64,10 @@ pipeline {
       steps {
         script {
           withCredentials([file(credentialsId: 'cluster-credentials-file', variable: 'TOKEN')]) {
-            sh 'kubectl apply -f frontend/deployment.yaml --context minikube'
-            sh 'kubectl apply -f frontend/service.yaml --context minikube'
-            sh 'kubectl apply -f backend/deployment.yaml --context minikube'
-            sh 'kubectl apply -f backend/service.yaml --context minikube'
+            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f frontend/deployment.yaml'
+            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f frontend/service.yaml'
+            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f backend/deployment.yaml'
+            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f backend/service.yaml'
           }
         }
       }
