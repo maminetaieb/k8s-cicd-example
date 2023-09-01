@@ -64,10 +64,10 @@ pipeline {
       steps {
         script {
           withCredentials([file(credentialsId: 'cluster-credentials-file', variable: 'KUBECONFIG')]) {
-            sh 'kubectl apply -f frontend/deployment.yaml'
-            sh 'kubectl apply -f frontend/service.yaml'
             sh 'kubectl apply -f backend/deployment.yaml'
             sh 'kubectl apply -f backend/service.yaml'
+            sh 'kubectl apply -f frontend/deployment.yaml'
+            sh 'kubectl apply -f frontend/service.yaml'
           }
         }
       }
