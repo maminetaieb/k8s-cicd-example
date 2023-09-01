@@ -1,10 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  #the Deployment Name
   name: backend
 spec:
-  #the Number of Pods
   replicas: 2
   selector:
     matchLabels:
@@ -14,12 +12,8 @@ spec:
       labels:
         app: backend
     spec:
-      # Container Details
       containers:
-
       - name: backend
-        # Docker Image
         image: mohamedaminetaieb/server
         ports:
-        #the port on which the app can be reached out inside the container
         - containerPort: 8000

@@ -1,10 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  #the Deployment Name
   name: frontend
 spec:
-  #the Number of Pods
   replicas: 2
   selector:
     matchLabels:
@@ -14,12 +12,8 @@ spec:
       labels:
         app: frontend
     spec:
-      # Container Details
       containers:
-      
       - name: frontend
-        # Docker Image
         image: mohamedaminetaieb/client
         ports:
-        #the port on which the app can be reached out inside the container
         - containerPort: 3000
