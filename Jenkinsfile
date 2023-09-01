@@ -63,7 +63,7 @@ pipeline {
     stage('Deploying container to Kubernetes') {
       steps {
         script {
-          withCredentials([string(credentialsId: 'cluster-credentials', variable: 'KUBECONFIG')]) {
+          withCredentials([string(credentialsId: 'cluster-credentials-file', variable: 'KUBECONFIG')]) {
             sh 'kubectl apply -f frontend/deployment.yaml'
             sh 'kubectl apply -f frontend/service.yaml'
             sh 'kubectl apply -f backend/deployment.yaml'
