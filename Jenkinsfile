@@ -64,7 +64,7 @@ pipeline {
       steps {
         script {
           withCredentials([string(credentialsId: 'cluster-credentials', variable: 'TOKEN')]) {
-                sh "kubectl --token=\$TOKEN --server=https://kubernetes.default.svc.cluster.local apply -f deployment.yaml"
+                sh "kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f deployment.yaml"
             }
           sh 'kubectl apply -f frontend/deployment.yaml'
           sh 'kubectl apply -f frontend/service.yaml'
