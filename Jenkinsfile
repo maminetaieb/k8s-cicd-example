@@ -63,11 +63,11 @@ pipeline {
     stage('Deploying container to Kubernetes') {
       steps {
         script {
-          withCredentials([file(credentialsId: 'cluster-credentials-file', variable: 'TOKEN')]) {
-            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f frontend/deployment.yaml'
-            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f frontend/service.yaml'
-            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f backend/deployment.yaml'
-            sh 'kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f backend/service.yaml'
+          withCredentials([string(credentialsId: 'cluster-credentials', variable: 'KUBECONFIG')]) {
+            sh 'kubectl apply -f frontend/deployment.yaml'
+            sh 'kubectl apply -f frontend/service.yaml'
+            sh 'kubectl apply -f backend/deployment.yaml'
+            sh 'kubectl apply -f backend/service.yaml'
           }
         }
       }
