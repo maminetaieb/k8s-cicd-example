@@ -63,7 +63,7 @@ pipeline {
     stage('Deploying container to Kubernetes') {
       steps {
         script {
-          withCredentials([string(credentialsId: 'cluster-credentials-file', variable: 'TOKEN')]) {
+          withCredentials([string(credentialsId: 'cluster-credentials-file', variable: 'KUBECONFIG')]) {
                 sh "kubectl --token=\$TOKEN --server=https://127.0.0.1:32774 apply -f deployment.yaml"
             }
           sh 'kubectl apply -f frontend/deployment.yaml --context minikube'
